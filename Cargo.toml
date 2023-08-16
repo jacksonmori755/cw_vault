@@ -1,0 +1,38 @@
+[package]
+name = "cw-vault"
+description = "A vault contract for Cosmos chain"
+version = "0.12.0"
+authors = ["jacksonmori <jackson@routerprotocol.com>"]
+edition = "2018"
+license = "Apache-2.0"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = 'abort'
+incremental = false
+overflow-checks = true
+
+[features]
+backtraces = ["cosmwasm-std/backtraces"]
+
+[dependencies]
+cosmwasm-std = "1.1.0"
+cosmwasm-storage = "1.1.0"
+cw-storage-plus = { version = "1.1.0" }
+cosmwasm-schema = "1.1.0"
+thiserror = "1.0.31"
+hex = "0.4.3"
+router-wasm-bindings = { version = "0.2.4", default-features = false, features = ["ethabi"] }
+cw-utils = "1.0.1"
+cw20 = "1.0.1"
+
+[dev-dependencies]
+
